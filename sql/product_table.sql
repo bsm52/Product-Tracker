@@ -1,0 +1,1 @@
+CREATE TABLE products(item_id INT NOT NULL AUTO_INCREMENT, item_name VARCHAR(75) NOT NULL, item_price DOUBLE NOT NULL, item_quantity INT NOT NULL, item_condition VARCHAR(30) NOT NULL, PRIMARY KEY ( item_id ));
