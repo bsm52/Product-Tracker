@@ -1,3 +1,7 @@
+<?php  
+	session_start();
+	error_reporting(0);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,12 @@
 			<a href="viewItems.php" class="w3-button w3-padding-large">View Items</a>
 			<a href="packageTracker.php" class="w3-button w3-padding-large">Track a Package</a>
 			<a href="index.php" style="float:right; color: white; font-family: Verdana; font-size: 15px;" class="w3-padding-large">Inventory Tracker</a>
-			<a href="login.php" style="float: right;" class="w3-button w3-padding-large">Login</a>
+			<?php 
+			if($_SESSION['login'] == 0) //if the user has not logged in yet
+				echo "<a href='login.php' style='float: right;' class='w3-button w3-padding-large'>Login</a>";
+			else
+				echo "<a href='logout.php' style='float: right;' class='w3-button w3-padding-large'>Logout</a>";
+		    ?>
 			<a href="register.php" style="float: right;" class="w3-button w3-padding-large">Register</a>
 		</div>
 	</div>

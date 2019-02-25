@@ -41,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 		    	 $Result = $conn->query("INSERT INTO users(first_name, last_name, user_name, password) VALUES('$first_name','$last_name', '$username','$hashed_password')");
 			    if($Result)
 			    {
+			    	$sql = "CREATE TABLE " . $username . "_products(item_id INT NOT NULL AUTO_INCREMENT, item_name VARCHAR(75) NOT NULL, item_price DOUBLE NOT NULL, item_quantity INT NOT NULL, item_condition VARCHAR(30) NOT NULL, PRIMARY KEY ( item_id ));";
+			    	$Result = mysqli_query($conn, $sql);
 			    	echo "<script type='text/javascript'>alert('Your Account Has Been Created');</script>";
 			    }
 			    else

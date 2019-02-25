@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+	$un = $_SESSION['username'];
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +22,7 @@ if (!$conn) {
 }
 
 // sql to delete a record
-$sql = "DELETE FROM products WHERE item_id = $id"; 
+$sql = "DELETE FROM " . $un . "_products WHERE item_id = $id"; 
 
 if (mysqli_query($conn, $sql)) {
     mysqli_close($conn);

@@ -1,8 +1,13 @@
+<?php  
+	session_start();
+	error_reporting(0);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Add Item</title>
 	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="mainStyle.css">
 </head>
 <body>
 	<?php
@@ -20,7 +25,7 @@ $price = $_POST["priceBought"];
 $quantity = $_POST["quantity"];
 $condition = $_POST["condition"];
 
-$Result = $conn->query("INSERT INTO products (item_name, item_price, item_quantity, item_condition) VALUES('" . $name . "','"  . $price . "', '" . $quantity . "','" . $condition . "')") ;
+$Result = $conn->query("INSERT INTO ". $_SESSION['username'] . "_products (item_name, item_price, item_quantity, item_condition) VALUES('" . $name . "','"  . $price . "', '" . $quantity . "','" . $condition . "')") ;
 ?>
 <div class="w3-top" style="clear:both;">
 		<div class="w3-bar w3-black w3-card">
@@ -28,8 +33,13 @@ $Result = $conn->query("INSERT INTO products (item_name, item_price, item_quanti
 			<a href="index.php" class="w3-button w3-padding-large">Add an Item</a>
 			<a href="viewItems.php" class="w3-button w3-padding-large">View Items</a>
 			<a href="packageTracker.php" class="w3-button w3-padding-large">Track a Package</a>
-			<span style="float:right; color: white; font-family: Verdana; font-size: 15px;" class="w3-padding-large">Inventory Tracker</span>
-			<a href="login.php" style="float: right;" class="w3-button w3-padding-large">Login</a>
+			<a href="index.php" style="float:right; color: white; font-family: Verdana; font-size: 15px;" class="w3-padding-large">Inventory Tracker</a>
+			<?php 
+			if($_SESSION['login'] == 0) //if the user has not logged in yet
+				echo "<a href='login.php' style='float: right;' class='w3-button w3-padding-large'>Login</a>";
+			else
+				echo "<a href='logout.php' style='float: right;' class='w3-button w3-padding-large'>Logout</a>";
+		    ?>
 			<a href="register.php" style="float: right;" class="w3-button w3-padding-large">Register</a>
 		</div>
 	</div>
@@ -37,6 +47,20 @@ $Result = $conn->query("INSERT INTO products (item_name, item_price, item_quanti
 	<div>
 		<p>Your <?php echo $name; ?> has been entered!</p>
 	</div>
+
+	<div id="addFormArea" class="addItem">
+			<h2>Add your Item:</h2>
+			<form id="addForm" method="post" action="additem.php">
+				<input type="text" name="item" placeholder="Item Name"><br>
+				$<input type="number" name="priceBought" step="0.01" min="0.01" placeholder="Bought Price"><br>
+				How Many? <input type="number" name="quantity" min="0"><br>
+				Item Condition:<br>
+					 <input type="checkbox" name="condition" value="new">New <br>
+					 <input type="checkbox" name="condition" value="used">Used <br>
+				<input type="submit">
+				
+			</form>
+		</div>
 
 </body>
 </html>
