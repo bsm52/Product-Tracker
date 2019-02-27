@@ -7,6 +7,7 @@
 <head>
 	<title>Track a Package</title>
 	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="w3-top" style="clear:both;">
@@ -25,20 +26,20 @@
 			<a href="register.php" style="float: right;" class="w3-button w3-padding-large">Register</a>
 		</div>
 	</div>
-
-
-	<div class="w3-content">
-		http://production.shippingapis.com/ShippingApi.dll?API=TrackV2&XML=<TrackFieldRequest USERID="753BMSTC4882">
-		<TrackID ID="9405509699937255102541"></TrackID> 
-		</TrackFieldRequest>
-		<TrackResponse>
-			<TrackInfo ID="9405509699937255102541">
-				<TrackSummary></TrackSummary>
-				<TrackDetail></TrackDetail>
-			</TrackInfo>
-
-		</TrackResponse>
+	<div id="trackingInfo">
+		<?php 
+			$info = "";
+			$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='9400109699939738879282'></TrackID></TrackRequest>";
+			$xml = simplexml_load_file($url);
+			for($i = 0; $i < 10; $i++)
+			{
+				$title = $xml->TrackInfo->TrackDetail[$i];
+				$info .= "<h2>$title</h2>";
+			}
+			echo $info;
+		 ?>
 	</div>
+
 
 </body>
 </html>

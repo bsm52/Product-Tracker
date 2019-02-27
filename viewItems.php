@@ -50,7 +50,6 @@ if($_SESSION['login'] == 1)
 	$Result = $conn->query("SELECT * FROM " . $un . "_products;");
 	echo "<table border='1' id='table'>
 	<tr>
-	<th>ID</th>
 	<th>Name</th>
 	<th>Price</th>
 	<th>Quantity</th>
@@ -62,7 +61,6 @@ if($_SESSION['login'] == 1)
 	{
 
 		echo "<tr>";
-		echo "<td>" . $row['item_id'] . "</td>";
 		echo "<td>" . $row['item_name'] . "</td>";
 		echo "<td>$" . $row['item_price'] . "</td>";
 		echo "<td>" . $row['item_quantity'] . "</td>";

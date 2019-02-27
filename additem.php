@@ -10,22 +10,26 @@
 	<link rel="stylesheet" type="text/css" href="mainStyle.css">
 </head>
 <body>
-	<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+<?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	 {
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password);
+		// Create connection
+		$conn = mysqli_connect($servername, $username, $password);
 
-$er = mysqli_select_db($conn,"product_tracker");
+		$er = mysqli_select_db($conn,"product_tracker");
 
-$name = $_POST["item"];
-$price = $_POST["priceBought"];
-$quantity = $_POST["quantity"];
-$condition = $_POST["condition"];
+		$name = $_POST["item"];
+		$price = $_POST["priceBought"];
+		$quantity = $_POST["quantity"];
+		$condition = $_POST["condition"];
 
-$Result = $conn->query("INSERT INTO ". $_SESSION['username'] . "_products (item_name, item_price, item_quantity, item_condition) VALUES('" . $name . "','"  . $price . "', '" . $quantity . "','" . $condition . "')") ;
+		$Result = $conn->query("INSERT INTO ". $_SESSION['username'] . "_products (item_name, item_price, item_quantity, item_condition) VALUES('" . $name . "','"  . $price . "', '" . $quantity . "','" . $condition . "')") ;
+	 }
+
 ?>
 <div class="w3-top" style="clear:both;">
 		<div class="w3-bar w3-black w3-card">
@@ -50,14 +54,14 @@ $Result = $conn->query("INSERT INTO ". $_SESSION['username'] . "_products (item_
 
 	<div id="addFormArea" class="addItem">
 			<h2>Add your Item:</h2>
-			<form id="addForm" method="post" action="additem.php">
+			<form id="addForm" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 				<input type="text" name="item" placeholder="Item Name"><br>
 				$<input type="number" name="priceBought" step="0.01" min="0.01" placeholder="Bought Price"><br>
 				How Many? <input type="number" name="quantity" min="0"><br>
 				Item Condition:<br>
 					 <input type="checkbox" name="condition" value="new">New <br>
 					 <input type="checkbox" name="condition" value="used">Used <br>
-				<input type="submit">
+				<input type="submit" name="submit">
 				
 			</form>
 		</div>
