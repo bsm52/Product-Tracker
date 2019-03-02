@@ -7,6 +7,7 @@
 <head>
 	<title>Track a Package</title>
 	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="./mainStyle.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -26,17 +27,33 @@
 			<a href="register.php" style="float: right;" class="w3-button w3-padding-large">Register</a>
 		</div>
 	</div>
-	<div id="trackingInfo">
+	<div class="w3-content mainBody">
+
+		<form id="trackingInfo" class="trackingArea" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+			<span>Please enter your USPS tracking number:</span><br>
+			<input type="text" style="width: 300px;" placeholder="Tracking Number" name="trackingNum">
+			<input type="submit" name="Submit">
+			
+		</form>
+
+
 		<?php 
-			$info = "";
-			$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='9400109699939738879282'></TrackID></TrackRequest>";
-			$xml = simplexml_load_file($url);
-			for($i = 0; $i < 10; $i++)
+			if ($_SERVER["REQUEST_METHOD"] == "POST")
 			{
-				$title = $xml->TrackInfo->TrackDetail[$i];
-				$info .= "<h2>$title</h2>";
+				$trackingNum = $_REQUEST['trackingNum'];
+				echo "<p class='displayTracking'>";
+				//echo $trackingNum;
+				//api url
+				$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
+				$xml = simplexml_load_file($url);
+				for($i = 0; $i < 10; $i++)
+				{
+					$title = $xml->TrackInfo->TrackDetail[$i];
+					echo " - $title <br>";
+				}
+				echo "</p>";
 			}
-			echo $info;
+			
 		 ?>
 	</div>
 

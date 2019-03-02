@@ -52,12 +52,20 @@
 		<p>Your <?php echo $name; ?> has been entered!</p>
 	</div>
 
-	<div id="addFormArea" class="addItem">
-			<h2>Add your Item:</h2>
+	<div id="addFormArea" class="">
+			<?php 
+				if($_SERVER['REQUEST_METHOD']=='POST')
+				{
+					echo "<p>Your " . $name . " has been added!";
+				}
+			 ?>
+			<h2 style="font-family: Verdana;">Add your Item:</h2>
+			<p>Please enter the Following Values for a Product</p>
+
 			<form id="addForm" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 				<input type="text" name="item" placeholder="Item Name"><br>
-				$<input type="number" name="priceBought" step="0.01" min="0.01" placeholder="Bought Price"><br>
-				How Many? <input type="number" name="quantity" min="0"><br>
+				<input type="text" name="priceBought" step="0.01" min="0.01" placeholder="Bought Price"><br>
+				<input type="text" name="quantity" min="0" placeholder="How Many?"><br>
 				Item Condition:<br>
 					 <input type="checkbox" name="condition" value="new">New <br>
 					 <input type="checkbox" name="condition" value="used">Used <br>

@@ -35,10 +35,13 @@ table{
 	margin-left: 40px;
 }
 
-#addformarea{
+#addFormArea{
 
 	margin-bottom: 30px;
-	margin-top: 10px;
+	margin-top: 20px;
+  padding-left: 30%;
+  padding-right: 30%;
+  text-align: center;
 }
 
 .login {
@@ -124,26 +127,41 @@ input[type="submit"] {
 }
 
 
-#table {
+.table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 80%;
+  width: 70%;
 }
 
-#table td, #table th {
+.table td, .table th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#table tr:nth-child(even){background-color:lightgrey;}
-#table tr:nth-child(even):hover{background-color:#e2e2e2;}
+.table tr:nth-child(even){background-color:lightgrey;}
+.table tr:nth-child(even):hover{background-color:#e2e2e2;}
 
-#table tr:hover {background-color: #ddd;}
+.table tr:hover {background-color: #ddd;}
 
-#table th {
+.table th {
   padding-top: 12px;
   padding-bottom: 12px;
+
   text-align: left;
   background-color: #4CAF50;
   color: white;
 }
+
+
+.set-width {
+  width: 300px;
+}
+
+.trackingArea{
+  margin-left: 35%;
+}
+
+.displayTracking{
+  margin-left: 10%;
+}
+

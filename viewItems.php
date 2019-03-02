@@ -48,13 +48,14 @@ if($_SESSION['login'] == 1)
 	$er = mysqli_select_db($conn,"product_tracker");
 
 	$Result = $conn->query("SELECT * FROM " . $un . "_products;");
-	echo "<table border='1' id='table'>
+	echo "<table border='1' class='table'>
 	<tr>
 	<th>Name</th>
 	<th>Price</th>
 	<th>Quantity</th>
 	<th>Condition</th>
 	<th>Delete?</th>
+	<th>Modify</th>
 	</tr>";
 
 	while($row = mysqli_fetch_array($Result))
@@ -66,6 +67,7 @@ if($_SESSION['login'] == 1)
 		echo "<td>" . $row['item_quantity'] . "</td>";
 		echo "<td>" . $row['item_condition'] . "</td>";
 		echo "<td><a class='w3-button' style='background-color: #a0faff;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #a0faff;' href='modify.php?id=".$row['item_id']."'>Modify Item</a></td>";
 		echo "</tr>";
 
 	}	
