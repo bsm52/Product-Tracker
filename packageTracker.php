@@ -1,6 +1,13 @@
 <?php  
 	session_start();
-	error_reporting(0);
+	//error_reporting(0);
+
+	$un = $_SESSION['username'];
+	$loggedOn = $_SESSION['login'];
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,16 +38,25 @@
 
 		<form id="trackingInfo" class="trackingArea" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			<span>Please enter your USPS tracking number:</span><br>
-			<input type="text" style="width: 300px;" placeholder="Tracking Number" name="trackingNum">
+			<input type="text" style="width: 300px;" placeholder="Tracking Number" name="trackingNum" required><br>
+			<input type="text" name="product" placeholder="Product Name" required>
 			<input type="submit" name="Submit">
 			
 		</form>
 
 
 		<?php 
-			if ($_SERVER["REQUEST_METHOD"] == "POST")
+			if ($_SERVER["REQUEST_METHOD"] == "POST" && $loggedOn == 1)
 			{
-				$trackingNum = $_REQUEST['trackingNum'];
+
+
+				//connect to the shipment_tracking DB
+				$conn = mysqli_connect('localhost','root' , ''); 
+				$er = mysqli_select_db($conn, 'shipment_tracking');
+
+
+				$product = $_REQUEST['product'];
+				$trackingNum =$_REQUEST['trackingNum'];	
 				echo "<p class='displayTracking'>";
 				//echo $trackingNum;
 				//api url
@@ -52,6 +68,21 @@
 					echo " - $title <br>";
 				}
 				echo "</p>";
+
+				$trackingNum = (int)$_REQUEST['trackingNum'];	
+
+				//add that tracking number and into the database 
+				$sql = "INSERT INTO " . $un . "_shipping(product_name, tracking_num, date_added) VALUES('$product', $trackingNum, NOW());";
+				$Result = mysqli_query($conn, $sql);
+				echo "$un Added to db";
+
+
+
+
+			}
+			elseif ($loggedOn != 1)
+			{
+				echo "You Have Yet to Log In!";
 			}
 			
 		 ?>

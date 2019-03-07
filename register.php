@@ -9,9 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 	$username = htmlspecialchars($_REQUEST['uname']);
 	$password = htmlspecialchars($_REQUEST['pw']);  
 
-	// Create connection to database
+	// Create connection to user database
 	$conn = mysqli_connect('localhost','root' , '');
 	$er = mysqli_select_db($conn,"product_tracker");
+
+	// Create connection to the shipping database so a table can be added for that individual user
+	$conn2 = mysqli_connect('localhost','root' , '');
+	$er2 = mysqli_select_db($conn2,"shipment_tracking");
 
    
 
@@ -43,7 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 			    {
 			    	$sql = "CREATE TABLE " . $username . "_products(item_id INT NOT NULL AUTO_INCREMENT, item_name VARCHAR(75) NOT NULL, item_price DOUBLE NOT NULL, item_quantity INT NOT NULL, item_condition VARCHAR(30) NOT NULL, PRIMARY KEY ( item_id ));";
 			    	$Result = mysqli_query($conn, $sql);
-			    	echo "<script type='text/javascript'>alert('Your Account Has Been Created');</script>";
+			    	
+
+
+			    	$sql2 = "CREATE TABLE " . $username . "_shipping(item_id INT PRIMARY KEY AUTO_INCREMENT, product_name VARCHAR(40), tracking_num VARCHAR(40), date_added DATE);";
+			    	$Result2 = mysqli_query($conn2, $sql2);
+			    	header('location: index.php?reg=1');;
 			    }
 			    else
 			    {

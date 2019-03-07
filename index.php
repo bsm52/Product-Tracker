@@ -1,6 +1,12 @@
 <?php  
 	session_start();
 	error_reporting(0);
+
+	$Register = $_GET['reg'];
+	if($Register == 1)
+	{
+		 echo "<script type='text/javascript'>alert('You Have Created an Account');</script>";
+	}
 ?>
 <!DOCTYPE html>
 <html>
