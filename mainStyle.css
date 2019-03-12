@@ -165,3 +165,18 @@ input[type="submit"] {
   margin-left: 10%;
 }
 
+
+
+.packagesSaved h1 {
+  text-align: center;
+  font-family: verdana;
+}
+
+.packagesSaved {
+  margin-top: 80px;
+}
+
+.packagesSaved table{
+  width: 35%;
+}
+

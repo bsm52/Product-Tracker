@@ -57,6 +57,7 @@
 
 				$product = $_REQUEST['product'];
 				$trackingNum =$_REQUEST['trackingNum'];	
+
 				echo "<p class='displayTracking'>";
 				//echo $trackingNum;
 				//api url
@@ -69,13 +70,13 @@
 				}
 				echo "</p>";
 
-				$trackingNum = (int)$_REQUEST['trackingNum'];	
+				$trackingNum = $_REQUEST['trackingNum'];	
 
 				//add that tracking number and into the database 
 				$sql = "INSERT INTO " . $un . "_shipping(product_name, tracking_num, date_added) VALUES('$product', $trackingNum, NOW());";
 				$Result = mysqli_query($conn, $sql);
-				echo "$un Added to db";
-
+				$trackingNum = intval($trackingNum);
+				
 
 
 
@@ -84,10 +85,37 @@
 			{
 				echo "You Have Yet to Log In!";
 			}
+
 			
 		 ?>
 	</div>
+	<div class="packagesSaved">
+		<h1>View Your Saved Packages</h1>
+		<br>
+		<?php 
+				$conn = mysqli_connect('localhost','root' , ''); 
+				$er = mysqli_select_db($conn, 'shipment_tracking');
+				$Result = $conn->query("SELECT * FROM " . $un . "_shipping;");
 
+				echo "<table border='1' class='table' width='35%'>
+				<tr>
+				<th>Name</th>
+				<th>Tracking Number</th>
+				</tr>";
+
+				while($row = mysqli_fetch_array($Result))
+				{
+
+					echo "<tr>";
+					echo "<td>" . $row['product_name'] . "</td>";
+					echo "<td>" . $row['tracking_num'] . "</td>";
+					echo "</tr>";
+
+				}	
+		 ?>
+
+		
+	</div>
 
 </body>
 </html>

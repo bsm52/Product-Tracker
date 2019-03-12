@@ -79,7 +79,7 @@
 			
 		</div>
 			 <p class="w3-justify">
-			 	Inventory Tracker is a web application for eccommerce sellers to keep track of their inventory. Easy store data such as quantity, cost basis, and condition. <br>Don't have an account already? 
+			 	Inventory Tracker is a web application for eccommerce sellers to keep track of their inventory. Easily store data such as quantity, cost basis, and condition. <br>Don't have an account already? 
 			 	Just click "Register" above to create your account and start tracking your inventory. 
 			 </p>
 		<div>
