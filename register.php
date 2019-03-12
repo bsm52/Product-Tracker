@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 		    	 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 		    	 //run the query
 		    	 $Result = $conn->query("INSERT INTO users(first_name, last_name, user_name, password) VALUES('$first_name','$last_name', '$username','$hashed_password')");
-			    if($Result)
+			    if($Result) //registration complete
 			    {
 			    	$sql = "CREATE TABLE " . $username . "_products(item_id INT NOT NULL AUTO_INCREMENT, item_name VARCHAR(75) NOT NULL, item_price DOUBLE NOT NULL, item_quantity INT NOT NULL, item_condition VARCHAR(30) NOT NULL, PRIMARY KEY ( item_id ));";
 			    	$Result = mysqli_query($conn, $sql);
@@ -52,7 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 
 			    	$sql2 = "CREATE TABLE " . $username . "_shipping(item_id INT PRIMARY KEY AUTO_INCREMENT, product_name VARCHAR(40), tracking_num VARCHAR(40), date_added DATE);";
 			    	$Result2 = mysqli_query($conn2, $sql2);
-			    	header('location: index.php?reg=1');;
+
+
+			    	//login and set username
+			    	$_SESSION['login'] = 1;
+			    	$_SESSION['username'] = $username;
+			    	header('location: index.php?reg=1');
 			    }
 			    else
 			    {
