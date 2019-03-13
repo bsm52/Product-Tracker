@@ -51,8 +51,8 @@
 	<div>
 		<p>Your <?php echo $name; ?> has been entered!</p>
 	</div>
-
-	<div id="addFormArea" class="">
+	<div>
+		<div id="addFormArea" class="">
 			<?php 
 				if($_SERVER['REQUEST_METHOD']=='POST')
 				{
@@ -69,10 +69,12 @@
 				 <span>Item Condition:</span>
 					 <input type="checkbox" name="condition" value="new">New 
 					 <input type="checkbox" name="condition" value="used">Used <br>
-				<input type="submit" name="submit" style="margin-left: 30%;">
+				<input type="submit" name="submit">
 				
 			</form>
 		</div>
+	</div>
+	
 
 </body>
 </html>

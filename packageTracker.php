@@ -35,15 +35,14 @@
 		</div>
 	</div>
 	<div class="w3-content mainBody">
-
-		<form id="trackingInfo" class="trackingArea" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-			<span>Please enter your USPS tracking number:</span><br>
-			<input type="text" style="width: 300px;" placeholder="Tracking Number" name="trackingNum" required><br>
-			<input type="text" name="product" placeholder="Product Name" required>
-			<input type="submit" name="Submit">
-			
-		</form>
-
+		<div>
+			<form id="trackingInfo" class="trackingArea" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+				<span>Please enter your USPS tracking number:</span><br>
+				<input type="text" style="width: 300px;" placeholder="Tracking Number" name="trackingNum" required><br>
+				<input type="text" name="product" placeholder="Product Name" required> <br>
+				<input type="submit" name="Submit">
+			</form>
+		</div>
 
 		<?php 
 			if ($_SERVER["REQUEST_METHOD"] == "POST" && $loggedOn == 1)
