@@ -44,7 +44,11 @@
 			</form>
 		</div>
 
-		<?php 
+		<?php
+
+			$track = $_GET['track'];
+			$lookup = $_GET['lookup'];
+			$prod = $_GET['prod'];
 			if ($_SERVER["REQUEST_METHOD"] == "POST" && $loggedOn == 1)
 			{
 
@@ -56,6 +60,7 @@
 
 				$product = $_REQUEST['product'];
 				$trackingNum =$_REQUEST['trackingNum'];	
+				echo $product;
 
 				echo "<p class='displayTracking'>";
 				//echo $trackingNum;
@@ -84,6 +89,29 @@
 			{
 				echo "You Have Yet to Log In!";
 			}
+			elseif($lookup == 1)
+			{
+
+				echo "<h1>Your Tracking Info for " . $prod . "</h1>";
+
+				$conn = mysqli_connect('localhost','root' , ''); 
+				$er = mysqli_select_db($conn, 'shipment_tracking');
+
+				$trackingNum = $track;	
+
+				echo "<p class='displayTracking'>";
+				//echo $trackingNum;
+				//api url
+				$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
+				$xml = simplexml_load_file($url);
+				for($i = 0; $i < 10; $i++)
+				{
+					$title = $xml->TrackInfo->TrackDetail[$i];
+					echo " - $title <br>";
+				}
+				echo "</p>";
+			}
+
 
 			
 		 ?>
@@ -100,6 +128,7 @@
 				<tr>
 				<th>Name</th>
 				<th>Tracking Number</th>
+				<th>View Shipping History</th>
 				</tr>";
 
 				while($row = mysqli_fetch_array($Result))
@@ -108,13 +137,14 @@
 					echo "<tr>";
 					echo "<td>" . $row['product_name'] . "</td>";
 					echo "<td>" . $row['tracking_num'] . "</td>";
+					echo "<td><a class='w3-button' href='packageTracker.php?track=".$row['tracking_num'] . "&lookup=1&prod=" .$row['product_name'] . "'>View History</a></td>";
 					echo "</tr>";
 
 				}	
 		 ?>
 
-		
 	</div>
+	 
 
 </body>
 </html>

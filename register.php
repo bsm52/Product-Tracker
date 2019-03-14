@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 			    	
 
 
-			    	$sql2 = "CREATE TABLE " . $username . "_shipping(item_id INT PRIMARY KEY AUTO_INCREMENT, product_name DECIMAL(20,0), tracking_num VARCHAR(40), date_added DATE);";
+			    	$sql2 = "CREATE TABLE " . $username . "_shipping(item_id INT PRIMARY KEY AUTO_INCREMENT, product_name VARCHAR(40), tracking_num VARCHAR(40), date_added DATE);";
 			    	$Result2 = mysqli_query($conn2, $sql2);
 
 
