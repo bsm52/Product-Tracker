@@ -119,11 +119,12 @@
 	<div class="packagesSaved">
 		<h1>View Your Saved Packages</h1>
 		<br>
+		<div>
 		<?php 
 				$conn = mysqli_connect('localhost','root' , ''); 
 				$er = mysqli_select_db($conn, 'shipment_tracking');
 				$Result = $conn->query("SELECT * FROM " . $un . "_shipping;");
-
+				
 				echo "<table border='1' class='table' width='35%'>
 				<tr>
 				<th>Name</th>
@@ -142,7 +143,7 @@
 
 				}	
 		 ?>
-
+		 </div>
 	</div>
 	 
 

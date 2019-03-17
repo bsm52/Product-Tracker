@@ -31,8 +31,9 @@ th {
 	padding-right: 10px;
 }
 
-table{
-	margin-left: 40px;
+.table{
+	margin-left: auto;
+  margin-right: auto;
 }
 
 #addFormArea{
