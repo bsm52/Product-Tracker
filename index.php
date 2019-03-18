@@ -17,35 +17,19 @@
 		Product Tracker
 	</title>
 </head>
-<body max-width:2000px;margin-top:46px>
+<body max-width:2000px;margin-top:46px onload="getTime()">
 	<div class="w3-top" style="clear:both;">
 		<div class="w3-bar w3-black w3-card">
 			<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-			<?php 
-			if($_SESSION['login'] == 1) //if the user has not logged in yet
-			{
-				echo "<a href='addItem.php' class='w3-button w3-padding-large'>Add an Item</a>";
-				echo "<a href='viewItems.php' class='w3-button w3-padding-large'>View Items</a>";
-				echo "<a href='packageTracker.php' class='w3-button w3-padding-large'>Track a Package</a>";
-			}
-		 	?>
-			<!--<a href="addItem.php" class="w3-button w3-padding-large">Add an Item</a>
-			<a href="viewItems.php" class="w3-button w3-padding-large">View Items</a>
-			<a href="packageTracker.php" class="w3-button w3-padding-large">Track a Package</a>-->
-			<a href="index.php" style="float:right; color: white; font-family: Verdana; font-size: 15px;" class="w3-padding-large">Inventory Tracker</a>
-		<?php 
-			if($_SESSION['login'] == 0) //if the user has not logged in yet
-				echo "<a href='login.php' style='float: right;' class='w3-button w3-padding-large'>Login</a>";
-			else
-				echo "<a href='logout.php' style='float: right;' class='w3-button w3-padding-large'>Logout</a>";
-		 ?>
-			<!--<a href="login.php" style="float: right;" class="w3-button w3-padding-large">Login</a>
-			<a href="logout.php" style="float: right;" class="w3-button w3-padding-large">Logout</a>-->
-			<a href="register.php" style="float: right;" class="w3-button w3-padding-large">Register</a>
+			<?php
+				include './get_header.php'; 
+				get_header();
+			?>
+
 		</div>
 	</div>
 
-
+	
 	<div class="w3-content mainBody">
 		<div id="loggedOn">
 		<?php  
@@ -54,6 +38,9 @@
 				echo "<p>Welcome, " . $_SESSION['username'] . "!<p>"; 
 			}
 		?>
+	<div id="dateArea">
+		
+	</div>
 	</div>
 		<!-- Automatic Slideshow Images -->
 	  <div class="mySlides w3-display-container w3-center" style="width: 100%">
@@ -97,24 +84,6 @@
 
 
 <script type="text/javascript">
-	function addItem(){
-		var form = document.getElementById('addForm');
-		var item = form['item'].value;
-		var price = form['priceBought'].value;
-		var location = form['location'].value;
-		if(form == '' || item == '' || price == '')
-		{
-			alert("Not all Values have been entered");
-		}
-
-		else
-			alert("You Added " + item +  " Costing $" + price + " From " + location);
-		}
-	function funct(){
-		var picture = document.getElementById('pic');
-		picture.src = "https://vignette.wikia.nocookie.net/theoffice/images/9/96/Prisonmike.png/revision/latest?cb=20100327171549";
-
-	}
 
 	// Automatic Slideshow - change image every 4 seconds
 	var myIndex = 0;
@@ -130,6 +99,26 @@
 	  if (myIndex > x.length) {myIndex = 1}    
 	  x[myIndex-1].style.display = "block";  
 	  setTimeout(carousel, 6000);    
+	}
+
+	function getTime(){
+		var date = new Date();
+		var hour = date.getHours();
+		var minute = date.getMinutes();
+		var day = date.getDay();
+		var month = date.getMonth();
+
+		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		var area = document.getElementById('dateArea');
+
+		if(hour > 12)
+		{
+			hour -= 12;
+		}
+		area.innerHTML = "Happy " +  days[day] + "! It is currently " + hour + ":" + minute;
+		var a = setTimeout(getTime(), 1000);
+
 	}
 
 
