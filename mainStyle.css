@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Cardo');
+
 .body{
 	margin: auto;
 	width: 1200px;
@@ -180,3 +183,14 @@ input[type="submit"] {
   width: 35%;
 }
 
+#dateArea {
+  font-family: 'Roboto';
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 25px;
+  background-color: #c6dcff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+}
