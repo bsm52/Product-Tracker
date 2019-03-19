@@ -1,5 +1,6 @@
 <?php  
 	session_start();
+	error_reporting(0);
 
 //This is to create registration for the user
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
@@ -85,7 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 			?>
 		</div>
 	</div>
-
+	<div class="register">
+		<p>Set Up Your Account</p>
+	</div>
 	<div class="w3-content mainBody">
 		<div class="login">
 			<form id="register" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off">

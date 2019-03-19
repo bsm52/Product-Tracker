@@ -70,6 +70,10 @@
 			 	Just click "Register" above to create your account and start tracking your inventory. 
 			 </p>
 		<div>
+		<div class="testimony testimonial">
+			<i>"Amazon is now the best search engine for selling products."</i><p class="testFrom">- ignitevisibility.com</p><br>
+			<i>"Amazon accounts for 43% of all online sales."</i><p class="testFrom">- inc.com</p>
+		</div>
 			<footer  style="margin-top: 500px;" class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
 				<p class="w3-medium">
 					By Brandon Meier -
@@ -77,6 +81,7 @@
 				</p>
 			</footer>
 		</div>
+		
 	</div>
 
 
@@ -117,7 +122,7 @@
 			hour -= 12;
 		}
 		area.innerHTML = "Happy " +  days[day] + "! It is currently " + hour + ":" + minute;
-		var a = setTimeout(getTime(), 1000);
+		var a = setTimeout(getTime, 1000);
 
 	}
 
