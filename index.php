@@ -31,56 +31,46 @@
 
 	
 	<div class="w3-content mainBody">
-		<div id="loggedOn">
-		<?php  
-			if($_SESSION['login'] == 1)
-			{
-				echo "<p>Welcome, " . $_SESSION['username'] . "!<p>"; 
-			}
-		?>
-	<div id="dateArea">
-		
-	</div>
-	</div>
-		<!-- Automatic Slideshow Images -->
-	  <div class="mySlides w3-display-container w3-center" style="width: 100%">
-	    <img src="./images/main_img1.jpg" style="width:100%">
-	    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"> 
-	    </div>
-	  </div>
-	  <div class="mySlides w3-display-container w3-center">
-	    <img src="./images/main_img2.jpg" style="width:100%">
-	    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">   
-	    </div>
-	  </div>
-	  <div class="mySlides w3-display-container w3-center">
-	    <img src="./images/main_img3.jpg" style="width:100%">
-	    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"> 
-	    </div>
-	  </div>
+			<div id="loggedOn">
+				<?php  
+					if($_SESSION['login'] == 1)
+					{
+						echo "<p>Welcome, " . $_SESSION['username'] . "!<p>"; 
+					}
+				?>
+				<div id="dateArea"></div>
+			</div>
+			<!-- Automatic Slideshow Images -->
+		  <div class="mySlides w3-display-container w3-center" style="width: 100%">
+		    <img src="./images/main_img1.jpg" style="width:100%">
+		    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"></div>
+		  </div>
+		  <div class="mySlides w3-display-container w3-center">
+		    <img src="./images/main_img2.jpg" style="width:100%">
+		    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"></div>
+		  </div>
+		  <div class="mySlides w3-display-container w3-center">
+		    <img src="./images/main_img3.jpg" style="width:100%">
+		    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"></div>
+		  </div>
 
 
-		<h1 class="w3-wid w3-center">Inventory Tracker</h1>
-		<p class="w3-opacity w3-center"><i>What is Inventory Tracker?</i></p>
-		<div>
-			
-		</div>
-			 <p class="w3-justify">
-			 	Inventory Tracker is a web application for eccommerce sellers to keep track of their inventory. Easily store data such as quantity, cost basis, and condition. <br>Don't have an account already? 
-			 	Just click "Register" above to create your account and start tracking your inventory. 
-			 </p>
-		<div>
-		<div class="testimony testimonial">
-			<i>"Amazon is now the best search engine for selling products."</i><p class="testFrom">- ignitevisibility.com</p><br>
-			<i>"Amazon accounts for 43% of all online sales."</i><p class="testFrom">- inc.com</p>
-		</div>
-			<footer  style="margin-top: 500px;" class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-				<p class="w3-medium">
-					By Brandon Meier -
-					Copyright 2019
-				</p>
-			</footer>
-		</div>
+			<h1 class="w3-wid w3-center">Inventory Tracker</h1>
+			<p class="w3-opacity w3-center"><i>What is Inventory Tracker?</i></p>
+				 <p class="w3-justify w3-center">
+				 	Inventory Tracker is a web application for eccommerce sellers to keep track of their inventory. Easily store data such as quantity, cost basis, and condition. <br>Don't have an account already? 
+				 	Just click "Register" above to create your account and start tracking your inventory. 
+				 </p>
+			<div>
+				<div class="testimony testimonial">
+					<i>"Amazon is now the best search engine for selling products."</i><p class="testFrom">- ignitevisibility.com</p><br>
+					<i>"Amazon accounts for 43% of all online sales."</i><p class="testFrom">- inc.com</p>
+				</div>
+				<?php
+					include './get_footer.php'; 
+					get_footer();
+				?>
+			</div>
 		
 	</div>
 
@@ -121,7 +111,14 @@
 		{
 			hour -= 12;
 		}
-		area.innerHTML = "Happy " +  days[day] + "! It is currently " + hour + ":" + minute;
+		if(minute < 10) //If the clock needs a 0 before the minute, such as 6:04
+		{
+			area.innerHTML = "Happy " +  days[day] + "! It is currently " + hour + ":0" + minute;
+		}
+		else
+		{
+			area.innerHTML = "Happy " +  days[day] + "! It is currently " + hour + ":" + minute;
+		}
 		var a = setTimeout(getTime, 1000);
 
 	}
