@@ -134,10 +134,20 @@ input[type="submit"] {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 70%;
+  
+}
+
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }
 
 .table td, .table th {
-  border: 1px solid #ddd;
+  
   padding: 8px;
 }
 
@@ -185,14 +195,8 @@ input[type="submit"] {
 
 #dateArea {
   font-family: 'Roboto';
-  font-size: 25px;
   text-align: center;
-  margin-bottom: 25px;
-  background-color: #c6dcff;
-  padding-top: 20px;
-  padding-bottom: 20px;
   font-weight: bold;
-  border-radius: 10px;
 }
 
 .testimonial{

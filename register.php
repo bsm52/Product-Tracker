@@ -89,6 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 	<div class="register">
 		<p>Set Up Your Account</p>
 	</div>
+	<div class="w3-center">
+		<p>We just need a few things from you and before you use Inventory Tracker</p>
+	</div>
 	<div class="w3-content mainBody">
 		<div class="login">
 			<form id="register" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off">
@@ -101,6 +104,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])) {
 			</form>
 		</div>
 	</div>
+	<?php
+		include './get_footer.php'; 
+		get_footer();
+	?>
 
 </body>
 </html>

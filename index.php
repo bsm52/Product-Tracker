@@ -35,11 +35,9 @@
 				<?php  
 					if($_SESSION['login'] == 1)
 					{
-						echo "<p>Welcome, " . $_SESSION['username'] . "!<p>"; 
+						echo "<p style='padding-left: 20px;'>Welcome, " . $_SESSION['username'] . " - <span id='dateArea'></span> </p>"; 
 					}
 				?>
-				<div id="dateArea"></div>
-			</div>
 			<!-- Automatic Slideshow Images -->
 		  <div class="mySlides w3-display-container w3-center" style="width: 100%">
 		    <img src="./images/main_img1.jpg" style="width:100%">

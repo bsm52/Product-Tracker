@@ -67,6 +67,10 @@
 			</form>
 		</div>
 	</div>
+	<?php
+		include './get_footer.php'; 
+		get_footer();
+	?>
 	
 
 </body>

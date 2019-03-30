@@ -1,6 +1,6 @@
 <?php  
 	session_start();
-	//error_reporting(0);
+	error_reporting(0);
 
 	$un = $_SESSION['username'];
 	$loggedOn = $_SESSION['login'];
@@ -139,6 +139,10 @@
 		 ?>
 		 </div>
 	</div>
+
+
+
+
 	 
 
 </body>

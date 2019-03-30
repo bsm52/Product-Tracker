@@ -59,8 +59,8 @@ if($_SESSION['login'] == 1)
 		echo "<td>$" . $row['item_price'] . "</td>";
 		echo "<td>" . $row['item_quantity'] . "</td>";
 		echo "<td>" . $row['item_condition'] . "</td>";
-		echo "<td><a class='w3-button' style='background-color: #a0faff;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
-		echo "<td><a class='w3-button' style='background-color: #a0faff;' href='modify.php?id=".$row['item_id']."'>Modify Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='modify.php?id=".$row['item_id']."'>Modify Item</a></td>";
 		echo "</tr>";
 
 	}	
@@ -71,6 +71,8 @@ else
 }
 
 ?>
+
+
 
 
 
