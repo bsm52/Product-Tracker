@@ -49,6 +49,7 @@ if($_SESSION['login'] == 1)
 	<th>Condition</th>
 	<th>Delete?</th>
 	<th>Modify</th>
+	<th>Ship</th>
 	</tr>";
 
 	while($row = mysqli_fetch_array($Result))
@@ -61,6 +62,7 @@ if($_SESSION['login'] == 1)
 		echo "<td>" . $row['item_condition'] . "</td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='modify.php?id=".$row['item_id']."'>Modify Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='packageTracker.php?name=".$row['item_name']."&ship=1'>Ship Item</a></td>";
 		echo "</tr>";
 
 	}	
