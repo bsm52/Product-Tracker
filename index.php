@@ -63,6 +63,7 @@
 				<div class="testimony testimonial">
 					<i>"Amazon is now the best search engine for selling products."</i><p class="testFrom">- ignitevisibility.com</p><br>
 					<i>"Amazon accounts for 43% of all online sales."</i><p class="testFrom">- inc.com</p>
+					<i>Amazon's Market Cap is currently at <?php include './scrape.php'; get_marketcap(); ?> Billion</i><p class="testFrom">-Fidelity</p>
 				</div>
 				<?php
 					include './get_footer.php'; 

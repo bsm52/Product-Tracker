@@ -134,17 +134,11 @@ input[type="submit"] {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 70%;
-  
+
 }
 
 
-table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
-}
 
-table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-}
 
 .table td, .table th {
   
@@ -177,8 +171,6 @@ table tr:last-child td:last-child {
 .displayTracking{
   margin-left: 10%;
 }
-
-
 
 .packagesSaved h1 {
   text-align: center;
