@@ -47,7 +47,7 @@ if($_SESSION['login'] == 1)
 	<th>Price</th>
 	<th>Quantity</th>
 	<th>Condition</th>
-	<th>Delete?</th>
+	<th>Delete</th>
 	<th>Modify</th>
 	<th>Ship</th>
 	</tr>";
@@ -61,7 +61,7 @@ if($_SESSION['login'] == 1)
 		echo "<td>" . $row['item_quantity'] . "</td>";
 		echo "<td>" . $row['item_condition'] . "</td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
-		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='modify.php?id=".$row['item_id']."'>Modify Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' onclick=\"popup('https://www.google.com')\">Modify Item</a></td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='packageTracker.php?name=".$row['item_name']."&ship=1'>Ship Item</a></td>";
 		echo "</tr>";
 
@@ -74,13 +74,9 @@ else
 
 ?>
 
-
-
-
-
 <script type="text/javascript">
-	function newPopup(url){
-		popupWindow = window.open(url,'popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+	function popup(url){
+		popupwindow = window.open(url, 'popupwindow', 'height=500,width=400,left=200,top=50,resizable=yes,scrollbars=yes,toolbar=yes' );
 	}
 </script>
 </body>
