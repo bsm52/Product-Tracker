@@ -3,6 +3,8 @@
 	error_reporting(0);
 
 	$un = $_SESSION['username'];
+	
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +63,7 @@ if($_SESSION['login'] == 1)
 		echo "<td>" . $row['item_quantity'] . "</td>";
 		echo "<td>" . $row['item_condition'] . "</td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
-		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' onclick=\"popup('https://www.google.com')\">Modify Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' onclick=\"popup('./updateItemTable.php?name=" . $row['item_name'] . "&price=" . $row['item_price'] . "&cond=" . $row['item_condition'] . "&quant=" . $row['item_quantity'] . "&id=" . $row['item_id'] . "')\">Modify Item</a></td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='packageTracker.php?name=".$row['item_name']."&ship=1'>Ship Item</a></td>";
 		echo "</tr>";
 

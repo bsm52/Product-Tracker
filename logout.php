@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	error_reporting(0);
 
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST['submit'])){
@@ -24,10 +25,10 @@
 			?>
 		</div>
 	</div>
-	<div class="w3-content mainBody">
+	<div class="w3-content mainBody w3-center">
 		<form id="register" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-				Would you like to Logout?
-				<input type="submit" name="submit">
+				Would you like to Logout?<br>
+				<input type="submit" name="submit" value="Logout">
 		</form>
 	</div>
 

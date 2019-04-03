@@ -5,9 +5,6 @@
 	$un = $_SESSION['username'];
 	$loggedOn = $_SESSION['login'];
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
