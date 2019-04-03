@@ -83,7 +83,7 @@
 			elseif($lookup == 1)
 			{
 
-				echo "<h1>Your Tracking Info for " . $prod . "</h1>";
+				echo "<h1 style=\"text-align: center; margin-top: 50px;\">Your Tracking Info for " . $prod . "</h1>";
 
 				$conn = mysqli_connect('localhost','root' , ''); 
 				$er = mysqli_select_db($conn, 'shipment_tracking');
@@ -95,6 +95,7 @@
 				//api url
 				$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
 				$xml = simplexml_load_file($url);
+				echo $xml->TrackInfo->TrackSummary . "<br>";
 				for($i = 0; $i < 10; $i++)
 				{
 					$title = $xml->TrackInfo->TrackDetail[$i];
