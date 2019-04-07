@@ -64,21 +64,25 @@ if($_SESSION['login'] == 1)
 		echo "<td>" . $row['item_condition'] . "</td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='delete.php?id=".$row['item_id']."'>Delete Item</a></td>";
 		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' onclick=\"popup('./updateItemTable.php?name=" . $row['item_name'] . "&price=" . $row['item_price'] . "&cond=" . $row['item_condition'] . "&quant=" . $row['item_quantity'] . "&id=" . $row['item_id'] . "')\">Modify Item</a></td>";
-		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' href='packageTracker.php?name=".$row['item_name']."&ship=1'>Ship Item</a></td>";
+		echo "<td><a class='w3-button' style='background-color: #e5e5e5; border-radius: 5px;' onclick=\"popup2('shipItem.php?id=".$row['item_id']."&ship=1')\">Ship Item</a></td>";
 		echo "</tr>";
-
 	}	
 }
 else
 {
 	echo "   You Haven't Logged into your Account Yet!";
 }
-
 ?>
+
+
 
 <script type="text/javascript">
 	function popup(url){
 		popupwindow = window.open(url, 'popupwindow', 'height=500,width=400,left=200,top=50,resizable=yes,scrollbars=yes,toolbar=yes' );
+	}
+
+	function popup2(url){
+		pop = window.open(url, 'pop', 'height=500,width=400,left=200,top=50,resizable=yes,scrollbars=yes,toolbar=yes');
 	}
 </script>
 </body>

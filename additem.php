@@ -72,6 +72,10 @@
 		get_footer();
 	?>
 	
-
+	<script type="text/javascript">
+		function popup(){
+		popupwindow = window.open('get_title.php', 'popupwindow', 'height=500,width=400,left=200,top=50,resizable=yes,scrollbars=yes,toolbar=yes' );
+	}
+	</script>
 </body>
 </html>

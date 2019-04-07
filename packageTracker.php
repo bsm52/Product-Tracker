@@ -5,6 +5,8 @@
 	$un = $_SESSION['username'];
 	$loggedOn = $_SESSION['login'];
 
+	$view = $_GET['view'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,73 +38,86 @@
 		</div>
 
 		<?php
-
-			$track = $_GET['track'];
-			$lookup = $_GET['lookup'];
-			$prod = $_GET['prod'];
-			if ($_SERVER["REQUEST_METHOD"] == "POST" && $loggedOn == 1)
+			if($view == 1)
 			{
-
-
 				//connect to the shipment_tracking DB
 				$conn = mysqli_connect('localhost','root' , ''); 
 				$er = mysqli_select_db($conn, 'shipment_tracking');
 
-
-				$product = $_REQUEST['product'];
-				$trackingNum =$_REQUEST['trackingNum'];	
-				echo $product;
-
-				echo "<p class='displayTracking'>";
-				//echo $trackingNum;
-				//api url
-				$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
-				$xml = simplexml_load_file($url);
-				for($i = 0; $i < 10; $i++)
-				{
-					$title = $xml->TrackInfo->TrackDetail[$i];
-					echo " - $title <br>";
-				}
-				echo "</p>";
-
-				$trackingNum = $_REQUEST['trackingNum'];	
-
-				//add that tracking number and into the database 
-				$sql = "INSERT INTO " . $un . "_shipping(product_name, tracking_num, date_added) VALUES('$product', $trackingNum, NOW());";
-				$Result = mysqli_query($conn, $sql);
-				$trackingNum = intval($trackingNum);
-				
-
-
-
+				//connect to the product's DB
+				$conn2 = mysqli_connect('localhost','root' , ''); 
+				$er2 = mysqli_select_db($conn2, 'product_tracker');
 			}
-			elseif ($loggedOn != 1)
+			else
 			{
-				echo "You Have Yet to Log In!";
-			}
-			elseif($lookup == 1)
-			{
-
-				echo "<h1 style=\"text-align: center; margin-top: 50px;\">Your Tracking Info for " . $prod . "</h1>";
-
-				$conn = mysqli_connect('localhost','root' , ''); 
-				$er = mysqli_select_db($conn, 'shipment_tracking');
-
-				$trackingNum = $track;	
-
-				echo "<p class='displayTracking'>";
-				//echo $trackingNum;
-				//api url
-				$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
-				$xml = simplexml_load_file($url);
-				echo $xml->TrackInfo->TrackSummary . "<br>";
-				for($i = 0; $i < 10; $i++)
+				$track = $_GET['track'];
+				$lookup = $_GET['lookup'];
+				$prod = $_GET['prod'];
+				if ($_SERVER["REQUEST_METHOD"] == "POST" && $loggedOn == 1)
 				{
-					$title = $xml->TrackInfo->TrackDetail[$i];
-					echo " - $title <br>";
+
+
+					//connect to the shipment_tracking DB
+					$conn = mysqli_connect('localhost','root' , ''); 
+					$er = mysqli_select_db($conn, 'shipment_tracking');
+
+
+					$product = $_REQUEST['product'];
+					$trackingNum =$_REQUEST['trackingNum'];	
+					echo $product;
+
+					echo "<p class='displayTracking'>";
+					//echo $trackingNum;
+					//api url
+					$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
+					$xml = simplexml_load_file($url);
+					for($i = 0; $i < 10; $i++)
+					{
+						$title = $xml->TrackInfo->TrackDetail[$i];
+						echo " - $title <br>";
+					}
+					echo "</p>";
+
+					$trackingNum = $_REQUEST['trackingNum'];	
+
+					//add that tracking number and into the database 
+					$sql = "INSERT INTO " . $un . "_shipping(product_name, tracking_num, date_added) VALUES('$product', $trackingNum, NOW());";
+					$Result = mysqli_query($conn, $sql);
+					$trackingNum = intval($trackingNum);
+					
+
+
+
 				}
-				echo "</p>";
+				elseif ($loggedOn != 1)
+				{
+					echo "You Have Yet to Log In!";
+				}
+				elseif($lookup == 1)
+				{
+
+					echo "<h1 style=\"text-align: center; margin-top: 50px;\">Your Tracking Info for " . $prod . "</h1>";
+
+					$conn = mysqli_connect('localhost','root' , ''); 
+					$er = mysqli_select_db($conn, 'shipment_tracking');
+
+					$trackingNum = $track;	
+
+					echo "<p class='displayTracking'>";
+					//echo $trackingNum;
+					//api url
+					$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
+					$xml = simplexml_load_file($url);
+					echo $xml->TrackInfo->TrackSummary . "<br>";
+					for($i = 0; $i < 10; $i++)
+					{
+						$title = $xml->TrackInfo->TrackDetail[$i];
+						echo " - $title <br>";
+					}
+					echo "</p>";
+				}
 			}
+			
 
 
 			
