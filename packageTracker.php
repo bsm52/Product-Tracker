@@ -56,7 +56,7 @@
 				if ($_SERVER["REQUEST_METHOD"] == "POST" && $loggedOn == 1)
 				{
 
-
+					
 					//connect to the shipment_tracking DB
 					$conn = mysqli_connect('localhost','root' , ''); 
 					$er = mysqli_select_db($conn, 'shipment_tracking');
@@ -64,7 +64,7 @@
 
 					$product = $_REQUEST['product'];
 					$trackingNum =$_REQUEST['trackingNum'];	
-					echo $product;
+					echo "<h1 style=\"text-align: center; margin-top: 50px;\">Your Tracking Info for " . $product . "</h1>";
 
 					echo "<p class='displayTracking'>";
 					//echo $trackingNum;
