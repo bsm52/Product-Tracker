@@ -47,6 +47,29 @@
 				//connect to the product's DB
 				$conn2 = mysqli_connect('localhost','root' , ''); 
 				$er2 = mysqli_select_db($conn2, 'product_tracker');
+
+				//get the tracking number for the item sent by the view items page
+				$track = $_POST['trackNum'];
+				//echo "Tracking Number sent by view items page" . $track;
+				echo "<p class='displayTracking'>";
+					//echo $trackingNum;
+					//api url
+					$trackingNum =$_POST['trackNum'];	
+					$url = "http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=<TrackRequest USERID='753BMSTC4882'><TrackID ID='$trackingNum'></TrackID></TrackRequest>";
+					$xml = simplexml_load_file($url);
+					for($i = 0; $i < 10; $i++)
+					{
+						$title = $xml->TrackInfo->TrackDetail[$i];
+						echo " - $title <br>";
+					}
+				echo "</p>";
+
+					$trackingNum = $_POST['trackNum'];	
+
+					//add that tracking number and into the database 
+					$sql = "INSERT INTO " . $un . "_shipping(product_name, tracking_num, date_added) VALUES('$product', $trackingNum, NOW());";
+					$Result = mysqli_query($conn, $sql);
+					$trackingNum = intval($trackingNum);
 			}
 			else
 			{

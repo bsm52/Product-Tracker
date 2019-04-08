@@ -82,7 +82,7 @@ else
 	}
 
 	function popup2(url){
-		pop = window.open(url, 'pop', 'height=500,width=400,left=200,top=50,resizable=yes,scrollbars=yes,toolbar=yes');
+		pop = window.open(url, 'pop', 'height=500,width=450,left=200,top=50,resizable=no,scrollbars=yes,toolbar=yes');
 	}
 </script>
 </body>
