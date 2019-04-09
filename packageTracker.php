@@ -50,6 +50,12 @@
 
 				//get the tracking number for the item sent by the view items page
 				$track = $_POST['trackNum'];
+
+				$getName = "SELECT item_name FROM " . $un . "_products WHERE item_id =" . $_GET['id'];
+				$Result = mysqli_query($conn2, $getName);
+				$product = mysqli_fetch_array($Result);
+				$product = $product['item_name'];
+
 				//echo "Tracking Number sent by view items page" . $track;
 				echo "<p class='displayTracking'>";
 					//echo $trackingNum;
