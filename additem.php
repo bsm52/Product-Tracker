@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php
-	$a = $_POST['onAmazon'];
+	//$a = $_POST['onAmazon'];
 	//echo "<script>alert($a);</script>";
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -36,7 +36,7 @@
 	 }
 	elseif($_GET['onAmazon'] == 1) //if the name was found on Amazon 
 	{
-		echo "<script>alert('hello');</script>";
+		//echo "<script>alert('hello');</script>";
 			
 		$servername = "localhost";
 		$username = "root";
@@ -54,9 +54,9 @@
 
 		$Result = $conn->query("INSERT INTO ". $_SESSION['username'] . "_products (item_name, item_price, item_quantity, item_condition) VALUES('" . $name . "','"  . $price . "', '" . $quantity . "','" . $condition . "')") ;
 
-		echo "$name";
+		//echo "$name";
 
-		echo "<script>alert($name +  $price + $quantity + $condition);</script>";
+		//echo "<script>alert($name +  $price + $quantity + $condition);</script>";
 
 	}
 	
@@ -73,16 +73,11 @@
 	</div>
 
 	<div>
-		<p>Your <?php echo $name; ?> has been entered!</p>
+		<p style="margin-top: 25px;">Your <?php echo $name; ?> has been entered!</p>
 	</div>
 	<div>
 		<div id="addFormArea" class="">
-			<?php 
-				if($_SERVER['REQUEST_METHOD']=='POST')
-				{
-					echo "<p>Your " . $name . " has been added!";
-				}
-			 ?>
+			
 			<h2>Product Already on Amazon?</h2>
 			<form id="alreadyAmazon" method="post" action="amazon-tester.php">
 				<input type="text" name="name" placeholder="Item's Name"><br>
