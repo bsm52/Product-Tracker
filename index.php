@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="mainStyle.css">
 	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
 	<title>
-		Product Tracker
+		Inventory Tracker
 	</title>
 </head>
 <body max-width:2000px;margin-top:46px onload="getTime()">

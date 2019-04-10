@@ -161,7 +161,7 @@
 				$er = mysqli_select_db($conn, 'shipment_tracking');
 				$Result = $conn->query("SELECT * FROM " . $un . "_shipping;");
 				
-				echo "<table border='1' class='table' width='35%'>
+				echo "<table border='1' class='table' style='width: 65%;'>
 				<tr>
 				<th>Name</th>
 				<th>Tracking Number</th>

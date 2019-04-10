@@ -216,3 +216,35 @@ input[type="submit"] {
   font-size: 50px;
 }
 
+.amazonItem{
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  float: left;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 200px;
+  height: 300px;
+}
+  
+.amazonItem > a{
+  border-radius: 10px;
+}
+
+.amazonItem > p{
+  overflow: hidden;
+     text-overflow: ellipsis;
+     line-height: 16px;     /* fallback */
+   max-height: 32px;   
+ }
+
+#getPrice{
+  margin-right: 25px;
+  margin-left: 25px;
+  clear: both;
+  text-align: center;
+ }
+
+ .amazonForm > input[type="text"]{
+  width: 500px;
+ }
