@@ -29,7 +29,7 @@ else
 		<div class="login" style="height: 400px; margin-top: 15px;">
 			<form id="login" method="post" action="modify.php?id=<?php echo $id ?>">
 				<input type="text" name="name" value="<?php echo $name; ?>" placeholder="name" > 
-				<input type="text" name="price" value="<?php echo "$" . $price; ?>" placeholder="price" >
+				<input type="text" name="price" value="<?php echo  $price; ?>" placeholder="price" >
 				<input type="text" name="quant" value="<?php echo $quantity; ?>" placeholder="quantity" >
 				<input type="text" name="cond" value="<?php echo $condition; ?>" placeholder="condition" >
 				<input type="submit" value="Submit Changes">
