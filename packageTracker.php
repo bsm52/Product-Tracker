@@ -166,6 +166,7 @@
 				<th>Name</th>
 				<th>Tracking Number</th>
 				<th>View Shipping History</th>
+				<th>Delete Record</th>
 				</tr>";
 
 				while($row = mysqli_fetch_array($Result))
@@ -175,6 +176,7 @@
 					echo "<td>" . $row['product_name'] . "</td>";
 					echo "<td>" . $row['tracking_num'] . "</td>";
 					echo "<td><a class='w3-button' href='packageTracker.php?track=".$row['tracking_num'] . "&lookup=1&prod=" .$row['product_name'] . "'>View History</a></td>";
+					echo "<td><a class='w3-button' href='delete_shipping_info.php?id=" . $row['item_id'] . "'>Delete Record</a></td>"; 
 					echo "</tr>";
 
 				}	
